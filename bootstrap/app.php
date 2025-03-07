@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\BanMiddleware;
 use App\Http\Middleware\BeforeMiddleware;
 use App\Http\Middleware\HandleTwoWordsModelBinding;
 use App\Http\Middleware\HasRole;
@@ -21,6 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
         $middleware->alias([
             "role" => HasRole::class,
+            "notBan" => BanMiddleware::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
