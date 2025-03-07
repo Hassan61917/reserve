@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\BeforeMiddleware;
 use App\Http\Middleware\HandleTwoWordsModelBinding;
+use App\Http\Middleware\HasRole;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -17,6 +18,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->api([
             HandleTwoWordsModelBinding::class,
             BeforeMiddleware::class,
+        ]);
+        $middleware->alias([
+            "role" => HasRole::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
