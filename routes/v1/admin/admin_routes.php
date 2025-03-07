@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\v1\Admin\AdminBanController;
+use App\Http\Controllers\Api\v1\Admin\AdminCityController;
 use App\Http\Controllers\Api\v1\Admin\AdminRoleController;
+use App\Http\Controllers\Api\v1\Admin\AdminStateController;
 use App\Http\Controllers\Api\v1\Admin\AdminUserController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,3 +16,6 @@ Route::delete("/users/{user}/{role}/remove-role", [AdminUserController::class, '
 Route::apiResource("bans", AdminBanController::class);
 Route::post("/bans/{user}/ban", [AdminBanController::class, "ban"])->name("user.ban");
 Route::post("/bans/{user}/unban", [AdminBanController::class, "unban"])->name("user.unban");
+
+Route::apiResource("states", AdminStateController::class);
+Route::apiResource("cities", AdminCityController::class);
