@@ -19,6 +19,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->registerObservers();
+    }
 
+    private function registerObservers(): void
+    {
+        $path = app_path("Observers");
+        $files = app("files")->files($path);
+        foreach ($files as $file) {
+            $observer = str_replace(".php", "", $file->getFileName());
+            $namespace = "App\\Observers\\";
+            $model = "App\\Models\\" . str_replace("Observer", "", $observer);
+            $model::observe($namespace . $observer);
+        }
     }
 }
