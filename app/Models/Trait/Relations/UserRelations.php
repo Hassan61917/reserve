@@ -3,9 +3,11 @@
 namespace App\Models\Trait\Relations;
 
 use App\Models\Ban;
+use App\Models\Profile;
 use App\Models\Role;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 trait UserRelations
 {
@@ -17,9 +19,13 @@ trait UserRelations
     {
         return $this->hasMany(Ban::class);
     }
-
     public function bannedUsers(): HasMany
     {
         return $this->hasMany(Ban::class, 'admin_id');
+    }
+
+    public function profile(): HasOne
+    {
+        return $this->hasOne(Profile::class);
     }
 }

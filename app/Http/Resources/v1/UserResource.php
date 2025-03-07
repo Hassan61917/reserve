@@ -14,6 +14,7 @@ class UserResource extends AppJsonResource
             "email" => $this->email,
             "registerAt" => $this->created_at,
             "roles" => $this->mergeRelations(RoleResource::class, "roles"),
+            "profile" => $this->mergeRelation(ProfileResource::class, "profile"),
         ];
     }
 }
