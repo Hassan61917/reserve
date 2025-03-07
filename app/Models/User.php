@@ -47,4 +47,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function hasRole(string $role): bool
+    {
+        return $this->roles()->where("title", $role)->exists();
+    }
 }

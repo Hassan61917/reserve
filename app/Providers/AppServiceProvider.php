@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Utils\CodeGenerator\CodeGenerator;
+use App\Utils\CodeGenerator\ICodeGenerator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(ICodeGenerator::class, CodeGenerator::class);
     }
 
     /**

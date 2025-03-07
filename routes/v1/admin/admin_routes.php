@@ -5,6 +5,8 @@ use App\Http\Controllers\Api\v1\Admin\AdminCityController;
 use App\Http\Controllers\Api\v1\Admin\AdminRoleController;
 use App\Http\Controllers\Api\v1\Admin\AdminStateController;
 use App\Http\Controllers\Api\v1\Admin\AdminUserController;
+use App\Http\Controllers\Api\v1\Admin\AdminWalletController;
+use App\Http\Controllers\Api\v1\Admin\AdminWalletTransactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::apiResource("roles", AdminRoleController::class);
@@ -19,3 +21,13 @@ Route::post("/bans/{user}/unban", [AdminBanController::class, "unban"])->name("u
 
 Route::apiResource("states", AdminStateController::class);
 Route::apiResource("cities", AdminCityController::class);
+
+Route::apiResource("wallets", AdminWalletController::class)->except(["update", "destroy"]);
+Route::prefix("wallets/{wallet}")->name("wallets.")->group(function () {
+    Route::post("/block", [AdminWalletController::class, "block"])->name("block");
+    Route::post("/unblock", [AdminWalletController::class, "unblock"])->name("unblock");
+    Route::post("/deposit", [AdminWalletController::class, "deposit"])->name("deposit");
+    Route::post("/withdraw", [AdminWalletController::class, "withdraw"])->name("withdraw");
+    Route::post("/{destination}/transfer", [AdminWalletController::class, "transfer"])->name("transfer");
+});
+Route::apiResource("wallet-transactions", AdminWalletTransactionController::class)->except(["store", "update"]);
