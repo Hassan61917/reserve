@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\v1\Common\CommonAdsOrderController;
 use App\Http\Controllers\Api\v1\Common\CommonBlockController;
 use App\Http\Controllers\Api\v1\Common\CommonCommentController;
 use App\Http\Controllers\Api\v1\Common\CommonFollowController;
+use App\Http\Controllers\Api\v1\Common\CommonLikeController;
 use App\Http\Controllers\Api\v1\Common\CommonMessageController;
 use App\Http\Controllers\Api\v1\Common\CommonOrderController;
 use App\Http\Controllers\Api\v1\Common\CommonProfileController;
@@ -57,4 +58,7 @@ Route::apiResource("reports", CommonReportController::class)->except("update");
 
 Route::delete("visits/delete-all", [CommonVisitController::class, "destroyAll"])->name("visits.delete-all");
 Route::apiResource("visits", CommonVisitController::class)->except("update");
+
+Route::post("like", [CommonLikeController::class, "like"])->name("like");
+Route::post("dislike", [CommonLikeController::class, "dislike"])->name("dislike");
 
