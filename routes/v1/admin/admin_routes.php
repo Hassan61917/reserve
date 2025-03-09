@@ -14,6 +14,8 @@ use App\Http\Controllers\Api\v1\Admin\AdminMessageController;
 use App\Http\Controllers\Api\v1\Admin\AdminOrderController;
 use App\Http\Controllers\Api\v1\Admin\AdminPostController;
 use App\Http\Controllers\Api\v1\Admin\AdminQuestionController;
+use App\Http\Controllers\Api\v1\Admin\AdminReportCategoryController;
+use App\Http\Controllers\Api\v1\Admin\AdminReportController;
 use App\Http\Controllers\Api\v1\Admin\AdminReviewController;
 use App\Http\Controllers\Api\v1\Admin\AdminRoleController;
 use App\Http\Controllers\Api\v1\Admin\AdminServiceController;
@@ -25,6 +27,7 @@ use App\Http\Controllers\Api\v1\Admin\AdminUserController;
 use App\Http\Controllers\Api\v1\Admin\AdminWalletController;
 use App\Http\Controllers\Api\v1\Admin\AdminWalletTransactionController;
 use App\Http\Controllers\Api\v1\Admin\AdminWishlistController;
+use App\Http\Controllers\Api\v1\Common\CommonReportController;
 use Illuminate\Support\Facades\Route;
 
 Route::apiResource("roles", AdminRoleController::class);
@@ -93,3 +96,9 @@ Route::apiResource("ticket-categories", AdminTicketCategoryController::class);
 Route::apiResource("tickets", AdminTicketController::class);
 Route::post("tickets/{ticket}/answer", [AdminTicketController::class, "answer"])->name("tickets.answer");
 Route::post("tickets/{ticket}/close", [AdminTicketController::class, "close"])->name("tickets.close");
+
+Route::apiResource("report-categories", AdminReportCategoryController::class);
+Route::apiResource("report-rules", AdminReportCategoryController::class);
+Route::apiResource("reports", AdminReportController::class)->except("update");
+
+Route::apiResource("reports", CommonReportController::class)->except("update");
