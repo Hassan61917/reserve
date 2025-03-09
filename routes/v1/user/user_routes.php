@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\v1\User\UserBookingController;
+use App\Http\Controllers\Api\v1\User\UserCommentController;
 use App\Http\Controllers\Api\v1\User\UserDiscountController;
 use App\Http\Controllers\Api\v1\User\UserPageController;
 use App\Http\Controllers\Api\v1\User\UserPostController;
@@ -40,3 +41,6 @@ Route::post("/questions/{question}/answer", [UserQuestionController::class, "ans
 Route::apiResource("page", UserPageController::class)->only("index", "update");
 
 Route::apiResource("posts", UserPostController::class);
+
+Route::get("/comments", [UserCommentController::class, "index"])->name("comments.index");
+Route::get("/comments/{comment}", [UserCommentController::class, "show"])->name("comments.show");

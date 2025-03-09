@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\v1\Common\CommonBlockController;
+use App\Http\Controllers\Api\v1\Common\CommonCommentController;
 use App\Http\Controllers\Api\v1\Common\CommonMessageController;
 use App\Http\Controllers\Api\v1\Common\CommonOrderController;
 use App\Http\Controllers\Api\v1\Common\CommonProfileController;
@@ -31,4 +32,7 @@ Route::get("inbox", [CommonMessageController::class, "inbox"])->name("inbox");
 Route::get("outbox", [CommonMessageController::class, "outbox"])->name("outbox");
 Route::get("chats", [CommonMessageController::class, "chats"])->name("chats");
 Route::get("chats/{user}/chat", [CommonMessageController::class, "chat"])->name("chat");
+
+Route::apiResource("comments", CommonCommentController::class);
+Route::post("/comments/{comment}/reply", [CommonCommentController::class, "reply"])->name("comments.reply");
 
