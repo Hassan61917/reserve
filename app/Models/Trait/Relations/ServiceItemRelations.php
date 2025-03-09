@@ -7,6 +7,7 @@ use App\Models\Discount;
 use App\Models\Question;
 use App\Models\Service;
 use App\Models\ServiceDayOff;
+use App\Models\Wishlist;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 trait ServiceItemRelations
@@ -31,5 +32,9 @@ trait ServiceItemRelations
     public function questions(): HasMany
     {
         return $this->hasMany(Question::class,"item_id");
+    }
+    public function wishlist(): HasMany
+    {
+        return $this->hasMany(WishList::class,"item_id");
     }
 }

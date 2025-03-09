@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\v1\Client\ClientBookingController;
 use App\Http\Controllers\Api\v1\Client\ClientDiscountController;
 use App\Http\Controllers\Api\v1\Client\ClientQuestionController;
 use App\Http\Controllers\Api\v1\Client\ClientReviewController;
+use App\Http\Controllers\Api\v1\Client\ClientWishlistController;
 use Illuminate\Support\Facades\Route;
 
 Route::get("used-discounts", [ClientDiscountController::class, "used"])->name("discounts.used");
@@ -16,3 +17,5 @@ Route::post("/bookings/{booking}/cancel", [ClientBookingController::class, 'canc
 Route::apiResource("reviews", ClientReviewController::class);
 
 Route::apiResource("questions", ClientQuestionController::class);
+
+Route::apiResource("wishlist", ClientWishlistController::class)->except("update");
