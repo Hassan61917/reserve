@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\v1\User\UserBookingController;
 use App\Http\Controllers\Api\v1\User\UserDiscountController;
 use App\Http\Controllers\Api\v1\User\UserServiceController;
 use App\Http\Controllers\Api\v1\User\UserServiceDayOffController;
@@ -16,3 +17,10 @@ Route::prefix("/services/{service}")->name("services.")->group(function () {
 });
 
 Route::apiResource("discounts", UserDiscountController::class);
+
+Route::get("/bookings", [UserBookingController::class, 'index'])->name('bookings.index');
+Route::prefix("bookings/{booking}")->name("bookings.")->group(function () {
+    Route::get("/", [UserBookingController::class, 'show'])->name('show');
+    Route::post("confirm", [UserBookingController::class, 'confirm'])->name('confirm');
+    Route::post("cancel", [UserBookingController::class, 'cancel'])->name('cancel');
+});

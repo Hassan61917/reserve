@@ -20,6 +20,8 @@ class ServiceItemResource extends AppJsonResource
             "hidden" => $this->hidden,
             "service" => $this->mergeRelation(ServiceResource::class, "service"),
             "dayOffs" => $this->mergeRelations(ServiceDayOffResource::class, "dayOffs"),
+            "bookings" => $this->mergeRelations(BookingResource::class, "bookings"),
+            "bookingsCount" => $this->mergeCount("bookings"),
             "dayOffsCount" => $this->mergeCount("dayOffs"),
         ];
     }

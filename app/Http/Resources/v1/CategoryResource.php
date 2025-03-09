@@ -16,6 +16,7 @@ class CategoryResource extends AppJsonResource
             "icon" => $this->icon,
             "children_count" => $this->mergeCount("children"),
             "children" => $this->mergeRelations(CategoryResource::class, "children",["children"]),
+            "services" => $this->mergeRelations(ServiceResource::class, "services"),
         ];
     }
 }

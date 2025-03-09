@@ -4,6 +4,7 @@ namespace App\Models\Trait\Relations;
 
 use App\Models\Category;
 use App\Models\Discount;
+use App\Models\Service;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -21,5 +22,9 @@ trait CategoryRelations
     public function discounts(): HasMany
     {
         return $this->hasMany(Discount::class);
+    }
+    public function services(): HasMany
+    {
+        return $this->hasMany(Service::class);
     }
 }

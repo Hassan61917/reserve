@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\v1\Admin\AdminBanController;
+use App\Http\Controllers\Api\v1\Admin\AdminBookingController;
 use App\Http\Controllers\Api\v1\Admin\AdminCategoryController;
 use App\Http\Controllers\Api\v1\Admin\AdminCityController;
 use App\Http\Controllers\Api\v1\Admin\AdminDiscountController;
@@ -49,3 +50,5 @@ Route::apiResource("service-items", AdminServiceItemController::class)->except("
 Route::apiResource("discounts", AdminDiscountController::class);
 
 Route::apiResource("orders", AdminOrderController::class)->except("store", "update");
+
+Route::apiResource("bookings", AdminBookingController::class)->except("store");

@@ -43,7 +43,7 @@ class UserServiceItemController extends AuthUserController
      */
     public function show(Service $service, ServiceItem $item): JsonResponse
     {
-        $item->load("service", "dayOffs");
+        $item->load("service", "dayOffs")->loadCount("bookings");
         return $this->ok($item);
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Models\Trait\Relations;
 
+use App\Models\Booking;
 use App\Models\Discount;
 use App\Models\Service;
 use App\Models\ServiceDayOff;
@@ -21,5 +22,9 @@ trait ServiceItemRelations
     public function discounts(): HasMany
     {
         return $this->hasMany(Discount::class,"item_id");
+    }
+    public function bookings(): HasMany
+    {
+        return $this->hasMany(Booking::class, "item_id");
     }
 }
