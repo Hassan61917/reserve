@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\v1\User\UserBookingController;
 use App\Http\Controllers\Api\v1\User\UserCommentController;
 use App\Http\Controllers\Api\v1\User\UserDiscountController;
+use App\Http\Controllers\Api\v1\User\UserFollowController;
 use App\Http\Controllers\Api\v1\User\UserPageController;
 use App\Http\Controllers\Api\v1\User\UserPostController;
 use App\Http\Controllers\Api\v1\User\UserQuestionController;
@@ -44,3 +45,8 @@ Route::apiResource("posts", UserPostController::class);
 
 Route::get("/comments", [UserCommentController::class, "index"])->name("comments.index");
 Route::get("/comments/{comment}", [UserCommentController::class, "show"])->name("comments.show");
+
+
+Route::get("following-requests", [UserFollowController::class, "index"])->name("following.index");
+Route::post("/follows/{follow}/accept", [UserFollowController::class, "accept"])->name("follow.accept");
+Route::post("/follows/{follow}/reject", [UserFollowController::class, "reject"])->name("follow.reject");

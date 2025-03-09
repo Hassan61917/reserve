@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\v1\Common\CommonBlockController;
 use App\Http\Controllers\Api\v1\Common\CommonCommentController;
+use App\Http\Controllers\Api\v1\Common\CommonFollowController;
 use App\Http\Controllers\Api\v1\Common\CommonMessageController;
 use App\Http\Controllers\Api\v1\Common\CommonOrderController;
 use App\Http\Controllers\Api\v1\Common\CommonProfileController;
@@ -35,4 +36,9 @@ Route::get("chats/{user}/chat", [CommonMessageController::class, "chat"])->name(
 
 Route::apiResource("comments", CommonCommentController::class);
 Route::post("/comments/{comment}/reply", [CommonCommentController::class, "reply"])->name("comments.reply");
+
+
+Route::get("follow-requests", [CommonFollowController::class, "index"])->name("follow.requests");
+Route::post("/follow", [CommonFollowController::class, "follow"])->name("follow");
+Route::post("/unfollow", [CommonFollowController::class, "unfollow"])->name("unfollow");
 
