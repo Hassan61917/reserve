@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\v1\User\UserBookingController;
 use App\Http\Controllers\Api\v1\User\UserDiscountController;
+use App\Http\Controllers\Api\v1\User\UserPageController;
 use App\Http\Controllers\Api\v1\User\UserQuestionController;
 use App\Http\Controllers\Api\v1\User\UserReviewController;
 use App\Http\Controllers\Api\v1\User\UserServiceController;
@@ -34,3 +35,5 @@ Route::get("/reviews/{review}/reply", [UserReviewController::class, 'reply'])->n
 Route::get("/questions", [UserQuestionController::class, "index"])->name("questions.index");
 Route::get("/questions/{question}", [UserQuestionController::class, "show"])->name("questions.show");
 Route::post("/questions/{question}/answer", [UserQuestionController::class, "answer"])->name("questions.answer");
+
+Route::apiResource("page", UserPageController::class)->only("index", "update");
