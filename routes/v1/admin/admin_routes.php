@@ -4,6 +4,8 @@ use App\Http\Controllers\Api\v1\Admin\AdminBanController;
 use App\Http\Controllers\Api\v1\Admin\AdminCategoryController;
 use App\Http\Controllers\Api\v1\Admin\AdminCityController;
 use App\Http\Controllers\Api\v1\Admin\AdminRoleController;
+use App\Http\Controllers\Api\v1\Admin\AdminServiceController;
+use App\Http\Controllers\Api\v1\Admin\AdminServiceItemController;
 use App\Http\Controllers\Api\v1\Admin\AdminStateController;
 use App\Http\Controllers\Api\v1\Admin\AdminUserController;
 use App\Http\Controllers\Api\v1\Admin\AdminWalletController;
@@ -34,3 +36,10 @@ Route::prefix("wallets/{wallet}")->name("wallets.")->group(function () {
 Route::apiResource("wallet-transactions", AdminWalletTransactionController::class)->except(["store", "update"]);
 
 Route::apiResource("categories", AdminCategoryController::class);
+
+Route::apiResource("services", AdminServiceController::class)->except("store");
+Route::prefix("/services/{service}")->name("service.")->group(function () {
+    Route::post("suspend", [AdminServiceController::class, 'suspend'])->name('suspend');
+    Route::put("/update-profile", [AdminServiceController::class, 'updateProfile'])->name('update-profile');
+});
+Route::apiResource("service-items", AdminServiceItemController::class)->except("store");

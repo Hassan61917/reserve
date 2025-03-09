@@ -5,6 +5,7 @@ namespace App\Models\Trait\Relations;
 use App\Models\Ban;
 use App\Models\Profile;
 use App\Models\Role;
+use App\Models\Service;
 use App\Models\Wallet;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -33,5 +34,9 @@ trait UserRelations
     public function wallet(): HasOne
     {
         return $this->hasOne(Wallet::class);
+    }
+    public function services(): HasMany
+    {
+        return $this->hasMany(Service::class);
     }
 }
