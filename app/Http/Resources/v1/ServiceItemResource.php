@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ServiceItemResource extends AppJsonResource
 {
-    protected array $resources = [];
+    protected array $resources = [VisitCountResource::class];
     public function toArray(Request $request): array
     {
         return [
