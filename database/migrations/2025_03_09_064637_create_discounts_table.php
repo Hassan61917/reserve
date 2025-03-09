@@ -26,7 +26,7 @@ return new class extends Migration
             $table->unsignedInteger("percent")->default(0);
             $table->unsignedInteger("total_balance")->default(0);
             $table->unsignedInteger("max_amount")->nullable();
-            $table->timestamp("expire_at")->nullable();
+            $table->timestamp("expired_at")->nullable();
             $table->timestamps();
         });
     }

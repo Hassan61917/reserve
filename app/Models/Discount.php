@@ -14,13 +14,13 @@ class Discount extends AppModel
         "title", "description", "code", "category_id",
         "client_id", "service_id", "item_id", "limit",
         "amount", "percent", "total_balance", "max_amount",
-        "expire_at"
+        "expired_at"
     ];
 
     protected function casts(): array
     {
         return [
-            "expire_at" => "datetime",
+            "expired_at" => "datetime",
         ];
     }
 

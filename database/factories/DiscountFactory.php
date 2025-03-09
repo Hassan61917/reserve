@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Support\Str;
 
 /**
@@ -17,6 +18,7 @@ class DiscountFactory extends AppFactory
     public function definition(): array
     {
         return [
+            "user_id" => User::factory(),
             "title" => $this->faker->sentence(),
             "description" => $this->faker->paragraph(),
             "code" => Str::random(12),
@@ -29,7 +31,7 @@ class DiscountFactory extends AppFactory
             "percent" => 10,
             "total_balance" => 100,
             "max_amount" => 100,
-            "expire_at" => now()->addMonth(),
+            "expired_at" => now()->addMonth(),
         ];
     }
 }

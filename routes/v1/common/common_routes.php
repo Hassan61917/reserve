@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\v1\Common\CommonOrderController;
 use App\Http\Controllers\Api\v1\Common\CommonProfileController;
 use App\Http\Controllers\Api\v1\Common\CommonWalletController;
 use App\Http\Controllers\Api\v1\Common\CommonWalletTransactionController;
@@ -16,3 +17,9 @@ Route::prefix("wallet")->name("wallet.")->group(function () {
     Route::post("/withdraw", [CommonWalletController::class, "withdraw"])->name("withdraw");
 });
 Route::apiResource("wallet-transactions", CommonWalletTransactionController::class)->except("store", "destroy");
+
+Route::apiResource("orders", CommonOrderController::class)->except("store");
+Route::post("/orders/{order}/discount", [CommonOrderController::class, 'discount'])->name('order.discount');
+Route::post("/orders/{order}/pay", [CommonOrderController::class, 'pay'])->name('order.pay');
+Route::post("/orders/{order}/cancel", [CommonOrderController::class, 'cancel'])->name('order.cancel');
+
