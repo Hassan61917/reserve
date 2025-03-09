@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\v1\User\UserBookingController;
 use App\Http\Controllers\Api\v1\User\UserDiscountController;
 use App\Http\Controllers\Api\v1\User\UserPageController;
+use App\Http\Controllers\Api\v1\User\UserPostController;
 use App\Http\Controllers\Api\v1\User\UserQuestionController;
 use App\Http\Controllers\Api\v1\User\UserReviewController;
 use App\Http\Controllers\Api\v1\User\UserServiceController;
@@ -37,3 +38,5 @@ Route::get("/questions/{question}", [UserQuestionController::class, "show"])->na
 Route::post("/questions/{question}/answer", [UserQuestionController::class, "answer"])->name("questions.answer");
 
 Route::apiResource("page", UserPageController::class)->only("index", "update");
+
+Route::apiResource("posts", UserPostController::class);
