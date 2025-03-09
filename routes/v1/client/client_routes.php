@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Api\v1\Client\ClientBookingController;
 use App\Http\Controllers\Api\v1\Client\ClientDiscountController;
+use App\Http\Controllers\Api\v1\Client\ClientQuestionController;
+use App\Http\Controllers\Api\v1\Client\ClientReviewController;
 use Illuminate\Support\Facades\Route;
 
 Route::get("used-discounts", [ClientDiscountController::class, "used"])->name("discounts.used");
@@ -10,3 +12,7 @@ Route::get("discounts/{discount}", [ClientDiscountController::class, "show"])->n
 
 Route::apiResource("bookings", ClientBookingController::class);
 Route::post("/bookings/{booking}/cancel", [ClientBookingController::class, 'cancel'])->name('booking.cancel');
+
+Route::apiResource("reviews", ClientReviewController::class);
+
+Route::apiResource("questions", ClientQuestionController::class);

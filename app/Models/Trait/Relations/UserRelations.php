@@ -4,6 +4,8 @@ namespace App\Models\Trait\Relations;
 
 use App\Models\Ban;
 use App\Models\Profile;
+use App\Models\Question;
+use App\Models\Review;
 use App\Models\Role;
 use App\Models\Service;
 use App\Models\Wallet;
@@ -39,5 +41,15 @@ trait UserRelations
     public function services(): HasMany
     {
         return $this->hasMany(Service::class);
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function questions(): HasMany
+    {
+        return $this->hasMany(Question::class);
     }
 }

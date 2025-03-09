@@ -6,7 +6,7 @@ use App\Enums\BookingStatus;
 use App\Events\BookingStatusUpdated;
 use App\Events\ItemWasBooked;
 use App\Exceptions\ModelException;
-use App\Handlers\Booking\BookingHandler;
+use App\Handlers\Booking\BookingRuleHandler;
 use App\Models\Booking;
 use App\Models\Service;
 use App\Models\ServiceItem;
@@ -19,9 +19,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class BookingService
 {
     public function __construct(
-        private BookingHandler $bookingHandler,
-        private WalletService  $walletService,
-        private OrderService   $orderService,
+        private BookingRuleHandler $bookingHandler,
+        private WalletService      $walletService,
+        private OrderService $orderService,
     )
     {
     }

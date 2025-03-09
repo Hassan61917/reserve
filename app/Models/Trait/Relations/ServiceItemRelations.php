@@ -4,6 +4,7 @@ namespace App\Models\Trait\Relations;
 
 use App\Models\Booking;
 use App\Models\Discount;
+use App\Models\Question;
 use App\Models\Service;
 use App\Models\ServiceDayOff;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -26,5 +27,9 @@ trait ServiceItemRelations
     public function bookings(): HasMany
     {
         return $this->hasMany(Booking::class, "item_id");
+    }
+    public function questions(): HasMany
+    {
+        return $this->hasMany(Question::class,"item_id");
     }
 }

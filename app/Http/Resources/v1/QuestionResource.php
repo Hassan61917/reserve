@@ -3,21 +3,19 @@
 namespace App\Http\Resources\v1;
 
 use App\Http\Resources\AppJsonResource;
+use App\Models\ServiceItem;
 use Illuminate\Http\Request;
 
-class BookingResource extends AppJsonResource
+class QuestionResource extends AppJsonResource
 {
     public function toArray(Request $request): array
     {
         return [
-            "id" => $this->id,
-            "date" => $this->date,
-            "hour" => $this->hour,
-            "status" => $this->status,
+            "question" => $this->question,
+            "answer" => $this->answer,
             "user" => $this->mergeRelation(UserResource::class, "user"),
             "service" => $this->mergeRelation(ServiceResource::class, "service"),
-            "item" =>$this->mergeRelation(ServiceItemResource::class,"item"),
-            "review"=>$this->mergeRelation(ReviewResource::class,"review"),
+            "item" => $this->mergeRelation(ServiceItem::class, "item"),
         ];
     }
 }

@@ -21,6 +21,7 @@ class ServiceItemResource extends AppJsonResource
             "service" => $this->mergeRelation(ServiceResource::class, "service"),
             "dayOffs" => $this->mergeRelations(ServiceDayOffResource::class, "dayOffs"),
             "bookings" => $this->mergeRelations(BookingResource::class, "bookings"),
+            "reviews" => $this->mergeRelations(ReviewResource::class, "reviews"),
             "bookingsCount" => $this->mergeCount("bookings"),
             "dayOffsCount" => $this->mergeCount("dayOffs"),
         ];

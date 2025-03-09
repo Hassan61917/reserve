@@ -5,6 +5,7 @@ namespace App\Models\Trait\Relations;
 use App\Models\Booking;
 use App\Models\Category;
 use App\Models\Discount;
+use App\Models\Question;
 use App\Models\ServiceDayoff;
 use App\Models\ServiceItem;
 use App\Models\ServiceProfile;
@@ -45,5 +46,9 @@ trait ServiceRelations
     public function bookings(): HasMany
     {
         return $this->hasMany(Booking::class);
+    }
+    public function questions(): HasMany
+    {
+        return $this->hasMany(Question::class);
     }
 }

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Api\v1\User\UserBookingController;
 use App\Http\Controllers\Api\v1\User\UserDiscountController;
+use App\Http\Controllers\Api\v1\User\UserQuestionController;
+use App\Http\Controllers\Api\v1\User\UserReviewController;
 use App\Http\Controllers\Api\v1\User\UserServiceController;
 use App\Http\Controllers\Api\v1\User\UserServiceDayOffController;
 use App\Http\Controllers\Api\v1\User\UserServiceItemController;
@@ -24,3 +26,11 @@ Route::prefix("bookings/{booking}")->name("bookings.")->group(function () {
     Route::post("confirm", [UserBookingController::class, 'confirm'])->name('confirm');
     Route::post("cancel", [UserBookingController::class, 'cancel'])->name('cancel');
 });
+
+Route::get("/reviews", [UserReviewController::class, 'index'])->name('reviews.index');
+Route::get("/reviews/{review}", [UserReviewController::class, 'show'])->name('reviews.show');
+Route::get("/reviews/{review}/reply", [UserReviewController::class, 'reply'])->name('reviews.reply');
+
+Route::get("/questions", [UserQuestionController::class, "index"])->name("questions.index");
+Route::get("/questions/{question}", [UserQuestionController::class, "show"])->name("questions.show");
+Route::post("/questions/{question}/answer", [UserQuestionController::class, "answer"])->name("questions.answer");
