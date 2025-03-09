@@ -13,6 +13,20 @@ Route::prefix("auth")
         require_once __DIR__ . "/auth_routes.php";
     });
 
+Route::prefix("me")
+    ->name("me.")
+    ->middleware(["auth:sanctum"])
+    ->group(function () {
+        require_once __DIR__ . "/common/common_routes.php";
+    });
+
+Route::prefix("client")
+    ->name("client.")
+    ->middleware(["auth:sanctum","role:client","notBan"])
+    ->group(function () {
+        require_once __DIR__ . "/client/client_routes.php";
+    });
+
 Route::prefix("user")
     ->name("user.")
     ->middleware(["auth:sanctum","role:user","notBan"])

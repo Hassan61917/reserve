@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1\User;
+namespace App\Http\Controllers\Api\v1\Common;
 
+use App\Http\Controllers\AuthBaseController;
 use App\Http\Controllers\AuthUserController;
 use App\Http\Resources\v1\WalletTransactionResource;
 use App\Models\WalletTransaction;
@@ -9,10 +10,11 @@ use App\ModelServices\Financial\WalletTransactionService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class UserWalletTransactionController extends AuthUserController
+class CommonWalletTransactionController extends AuthUserController
 {
     protected string $resource = WalletTransactionResource::class;
     protected ?string $ownerRelation = "wallet";
+
     public function __construct(
         private WalletTransactionService $transactionService
     )

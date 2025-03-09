@@ -11,12 +11,12 @@ use Illuminate\Http\JsonResponse;
 
 class UserServiceProfileController extends AuthUserController
 {
-    protected string $resource = ServiceProfileResource::class;
+    protected ?string $ownerRelation = "service";
 
     public function index(Service $service): JsonResponse
     {
         $profile = $service->profile;
-        return $this->ok($profile);
+        return $this->ok($profile, ServiceProfileResource::make($profile));
     }
 
     public function update(Service $service, UserServiceProfileRequest $request): JsonResponse
@@ -24,6 +24,6 @@ class UserServiceProfileController extends AuthUserController
         $profile = $service->profile;
         $profile->update($request->validated());
         $service->update(["status" => ServiceStatus::Complete]);
-        return $this->ok($profile);
+        return $this->ok($profile, ServiceProfileResource::make($profile));
     }
 }

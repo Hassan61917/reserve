@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1\User;
+namespace App\Http\Controllers\Api\v1\Common;
 
 use App\Http\Controllers\Api\v1\Auth\AuthController;
-use App\Http\Requests\v1\User\UserProfileRequest;
+use App\Http\Requests\v1\Common\CommonProfileRequest;
 use App\Http\Resources\v1\UserResource;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class UserProfileController extends AuthController
+class CommonProfileController extends AuthController
 {
     protected string $resource = UserResource::class;
 
@@ -20,14 +20,14 @@ class UserProfileController extends AuthController
         return $this->ok($user);
     }
 
-    public function store(UserProfileRequest $request): JsonResponse
+    public function store(CommonProfileRequest $request): JsonResponse
     {
         $data = $request->validated();
         $user = $this->authUser(['profile'])->profile()->create($data);
         return $this->ok($user);
     }
 
-    public function update(UserProfileRequest $request): JsonResponse
+    public function update(CommonProfileRequest $request): JsonResponse
     {
         $user = $this->authUser(['profile']);
         $user->profile()->update($request->validated());

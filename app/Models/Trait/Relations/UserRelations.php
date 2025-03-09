@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 trait UserRelations
 {
+    use UserFinancialRelations;
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class, "role_user");

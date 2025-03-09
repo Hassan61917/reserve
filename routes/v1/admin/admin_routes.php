@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\v1\Admin\AdminBanController;
 use App\Http\Controllers\Api\v1\Admin\AdminCategoryController;
 use App\Http\Controllers\Api\v1\Admin\AdminCityController;
+use App\Http\Controllers\Api\v1\Admin\AdminDiscountController;
 use App\Http\Controllers\Api\v1\Admin\AdminRoleController;
 use App\Http\Controllers\Api\v1\Admin\AdminServiceController;
 use App\Http\Controllers\Api\v1\Admin\AdminServiceItemController;
@@ -43,3 +44,5 @@ Route::prefix("/services/{service}")->name("service.")->group(function () {
     Route::put("/update-profile", [AdminServiceController::class, 'updateProfile'])->name('update-profile');
 });
 Route::apiResource("service-items", AdminServiceItemController::class)->except("store");
+
+Route::apiResource("discounts", AdminDiscountController::class);
