@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\v1\Common\CommonFollowController;
 use App\Http\Controllers\Api\v1\Common\CommonMessageController;
 use App\Http\Controllers\Api\v1\Common\CommonOrderController;
 use App\Http\Controllers\Api\v1\Common\CommonProfileController;
+use App\Http\Controllers\Api\v1\Common\CommonTicketController;
 use App\Http\Controllers\Api\v1\Common\CommonWalletController;
 use App\Http\Controllers\Api\v1\Common\CommonWalletTransactionController;
 use Illuminate\Support\Facades\Route;
@@ -45,5 +46,9 @@ Route::post("/unfollow", [CommonFollowController::class, "unfollow"])->name("unf
 
 Route::apiResource("ads-orders", CommonAdsOrderController::class);
 Route::post("ads-orders/{ads_order}/cancel", [CommonAdsOrderController::class, "cancel"])->name("ads-orders.cancel");
+
+Route::apiResource("tickets", CommonTicketController::class);
+Route::post("tickets/{ticket}/add-message", [CommonTicketController::class, "addMessage"])->name("tickets.addMessage");
+Route::post("tickets/{ticket}/close", [CommonTicketController::class, "close"])->name("tickets.close");
 
 
