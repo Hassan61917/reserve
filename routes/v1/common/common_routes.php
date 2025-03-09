@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\v1\Common\CommonBlockController;
+use App\Http\Controllers\Api\v1\Common\CommonMessageController;
 use App\Http\Controllers\Api\v1\Common\CommonOrderController;
 use App\Http\Controllers\Api\v1\Common\CommonProfileController;
 use App\Http\Controllers\Api\v1\Common\CommonWalletController;
@@ -22,4 +24,11 @@ Route::apiResource("orders", CommonOrderController::class)->except("store");
 Route::post("/orders/{order}/discount", [CommonOrderController::class, 'discount'])->name('order.discount');
 Route::post("/orders/{order}/pay", [CommonOrderController::class, 'pay'])->name('order.pay');
 Route::post("/orders/{order}/cancel", [CommonOrderController::class, 'cancel'])->name('order.cancel');
+
+Route::apiResource("blocks", CommonBlockController::class);
+Route::apiResource("messages", CommonMessageController::class)->except("index");
+Route::get("inbox", [CommonMessageController::class, "inbox"])->name("inbox");
+Route::get("outbox", [CommonMessageController::class, "outbox"])->name("outbox");
+Route::get("chats", [CommonMessageController::class, "chats"])->name("chats");
+Route::get("chats/{user}/chat", [CommonMessageController::class, "chat"])->name("chat");
 

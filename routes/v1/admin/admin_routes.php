@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\v1\Admin\AdminBookingController;
 use App\Http\Controllers\Api\v1\Admin\AdminCategoryController;
 use App\Http\Controllers\Api\v1\Admin\AdminCityController;
 use App\Http\Controllers\Api\v1\Admin\AdminDiscountController;
+use App\Http\Controllers\Api\v1\Admin\AdminMessageController;
 use App\Http\Controllers\Api\v1\Admin\AdminOrderController;
 use App\Http\Controllers\Api\v1\Admin\AdminQuestionController;
 use App\Http\Controllers\Api\v1\Admin\AdminReviewController;
@@ -58,3 +59,5 @@ Route::apiResource("bookings", AdminBookingController::class)->except("store");
 Route::apiResource("reviews", AdminReviewController::class)->except("store");
 
 Route::apiResource("questions", AdminQuestionController::class)->except("store");
+
+Route::apiResource("messages", AdminMessageController::class)->except("store");
