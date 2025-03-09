@@ -8,6 +8,8 @@ use App\Http\Controllers\Api\v1\Admin\AdminCategoryController;
 use App\Http\Controllers\Api\v1\Admin\AdminCityController;
 use App\Http\Controllers\Api\v1\Admin\AdminCommentController;
 use App\Http\Controllers\Api\v1\Admin\AdminDiscountController;
+use App\Http\Controllers\Api\v1\Admin\AdminLadderController;
+use App\Http\Controllers\Api\v1\Admin\AdminLadderOrderController;
 use App\Http\Controllers\Api\v1\Admin\AdminMessageController;
 use App\Http\Controllers\Api\v1\Admin\AdminOrderController;
 use App\Http\Controllers\Api\v1\Admin\AdminPostController;
@@ -78,3 +80,9 @@ Route::apiResource("advertise-orders", AdminAdsOrderController::class)->except("
 Route::post("advertise-orders/{advertise_order}/cancel", [AdminAdsOrderController::class, "cancel"])->name("advertise-orders.cancel");
 Route::post("advertise-orders/{advertise_order}/start", [AdminAdsOrderController::class, "start"])->name("advertise-orders.start");
 Route::post("advertise-orders/{advertise_order}/complete", [AdminAdsOrderController::class, "complete"])->name("advertise-orders.complete");
+
+Route::apiResource("ladders", AdminLadderController::class);
+Route::apiResource("ladder-orders", AdminLadderOrderController::class)->except("store");
+Route::post("ladder-orders/{ladder_order}/show", [AdminLadderOrderController::class, "show"])->name("ladder-orders.show");
+Route::post("ladder-orders/{ladder_order}/cancel", [AdminLadderOrderController::class, "cancel"])->name("ladder-orders.cancel");
+Route::post("ladder-orders/{ladder_order}/complete", [AdminLadderOrderController::class, "complete"])->name("ladder-orders.complete");

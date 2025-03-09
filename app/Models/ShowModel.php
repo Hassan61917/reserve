@@ -1,12 +1,10 @@
 <?php
 
-namespace App\ModelServices\Ads;
+namespace App\Models;
 
 use App\Enums\ShowStatus;
-use App\Models\AppModel;
 use App\Models\Interfaces\IOrderItem;
 use App\Models\Trait\With\WithOrder;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 

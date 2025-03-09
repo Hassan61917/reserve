@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\ModelServices\Ads\ShowModel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class AdvertiseOrder extends ShowModel

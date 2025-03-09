@@ -4,6 +4,7 @@ namespace App\ModelServices\Ads;
 
 use App\Enums\ShowStatus;
 use App\Exceptions\ModelException;
+use App\Models\ShowModel;
 use Carbon\Carbon;
 
 trait OrderShowable

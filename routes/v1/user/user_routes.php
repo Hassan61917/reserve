@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\v1\User\UserBookingController;
 use App\Http\Controllers\Api\v1\User\UserCommentController;
 use App\Http\Controllers\Api\v1\User\UserDiscountController;
 use App\Http\Controllers\Api\v1\User\UserFollowController;
+use App\Http\Controllers\Api\v1\User\UserLadderOrderController;
 use App\Http\Controllers\Api\v1\User\UserPageController;
 use App\Http\Controllers\Api\v1\User\UserPostController;
 use App\Http\Controllers\Api\v1\User\UserQuestionController;
@@ -50,3 +51,7 @@ Route::get("/comments/{comment}", [UserCommentController::class, "show"])->name(
 Route::get("following-requests", [UserFollowController::class, "index"])->name("following.index");
 Route::post("/follows/{follow}/accept", [UserFollowController::class, "accept"])->name("follow.accept");
 Route::post("/follows/{follow}/reject", [UserFollowController::class, "reject"])->name("follow.reject");
+
+Route::apiResource("ladder-orders", UserLadderOrderController::class);
+Route::post("ladder-orders/{ladder_order}/cancel", [UserLadderOrderController::class, "cancel"])->name("ladder-orders.cancel");
+
