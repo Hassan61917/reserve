@@ -54,6 +54,7 @@ class CommonMessageController extends AuthUserController
     public function show(Message $message): JsonResponse
     {
         $message->load(["sender", "receiver", "reply"]);
+        $message->update(["seen_at" => now()]);
         return $this->ok($message);
     }
 

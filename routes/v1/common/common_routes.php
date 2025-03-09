@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\v1\Common\CommonAdsOrderController;
 use App\Http\Controllers\Api\v1\Common\CommonBlockController;
 use App\Http\Controllers\Api\v1\Common\CommonCommentController;
 use App\Http\Controllers\Api\v1\Common\CommonFollowController;
@@ -41,4 +42,8 @@ Route::post("/comments/{comment}/reply", [CommonCommentController::class, "reply
 Route::get("follow-requests", [CommonFollowController::class, "index"])->name("follow.requests");
 Route::post("/follow", [CommonFollowController::class, "follow"])->name("follow");
 Route::post("/unfollow", [CommonFollowController::class, "unfollow"])->name("unfollow");
+
+Route::apiResource("ads-orders", CommonAdsOrderController::class);
+Route::post("ads-orders/{ads_order}/cancel", [CommonAdsOrderController::class, "cancel"])->name("ads-orders.cancel");
+
 
